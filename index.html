@@ -1,117 +1,173 @@
+```html
 <!DOCTYPE html>
 <html lang="th">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ขอโอกาสอีกครั้งนะ...</title>
+  <title>ขอโอกาสอีกครั้งนะ... 🥺❤️</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Kanit', sans-serif, system-ui; }
-    body { background: linear-gradient(135deg, #ffe6eb 0%, #def3f8 100%); display: flex; justify-content: center; align-items: center; min-height: 100vh; overflow: hidden; }
-    .container { background: white; padding: 25px 20px; border-radius: 24px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); width: 90%; max-width: 390px; text-align: center; position: relative; }
-    
-    .gif-img { width: 160px; height: 160px; object-fit: cover; border-radius: 20px; margin-bottom: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); }
-    
-    h2 { color: #4a4a4a; margin-bottom: 10px; font-size: 1.25rem; line-height: 1.5; font-weight: 600; }
-    p.subtext { color: #777; font-size: 0.95rem; margin-bottom: 20px; line-height: 1.5; }
-
-    .btn-group { display: flex; flex-direction: column; gap: 12px; justify-content: center; align-items: center; position: relative; min-height: 120px; }
-    
-    .btn { padding: 12px 20px; border-radius: 20px; font-size: 0.95rem; font-weight: bold; border: none; cursor: pointer; transition: all 0.2s ease; width: 100%; max-width: 280px; }
-    .btn-yes { background-color: #ff6b81; color: white; box-shadow: 0 4px 15px rgba(255, 107, 129, 0.35); }
-    .btn-yes:hover { background-color: #ff4757; transform: translateY(-2px); }
-    
-    .btn-no { background-color: #f1f2f6; color: #747d8c; position: relative; z-index: 5; }
-
-    /* หน้าสรุปผล */
-    .result-card { display: none; animation: fadeIn 0.5s ease; }
-    .result-title { color: #2f3542; font-size: 1.25rem; font-weight: bold; margin-bottom: 12px; }
-    .result-desc { color: #57606f; font-size: 0.92rem; line-height: 1.6; margin-bottom: 20px; }
-    .btn-thanks { background-color: #70a1ff; color: white; box-shadow: 0 4px 15px rgba(112, 161, 255, 0.35); }
-
-    @keyframes fadeIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
+    body {
+      font-family: 'Kanit', sans-serif;
+    }
+    /* Custom floating hearts animation */
+    @keyframes float {
+      0% { transform: translateY(0px) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+    }
+    .floating-heart {
+      position: absolute;
+      bottom: -20px;
+      animation: float 4s linear infinite;
+      z-index: 0;
+      user-select: none;
+      pointer-events: none;
+    }
   </style>
 </head>
-<body>
+<body class="bg-gradient-to-br from-pink-100 via-rose-100 to-red-100 min-h-screen flex items-center justify-center p-4 overflow-hidden relative">
 
-  <!-- หน้าขอโอกาส -->
-  <div class="container" id="mainStep">
-    <img src="https://media1.tenor.com/m/X9R1m0l80_gAAAAC/mochi-mochi-peach-cat-sad.gif" alt="Sad Cat" class="gif-img">
-    <h2>เรามาเริ่มต้นใหม่กันได้มั้ย<br>เค้าจะทำให้ดีกว่าเดิม</h2>
-    <p class="subtext">ขอโอกาสแก้ตัวอีกสักครั้งนะ...</p>
+  <div id="hearts-container" class="absolute inset-0 overflow-hidden pointer-events-none"></div>
 
-    <div class="btn-group">
-      <button class="btn btn-yes" onclick="acceptLove()">ได้</button>
-      <button class="btn btn-no" id="noBtn" onmouseover="handleNoButton()" onclick="handleNoButton()" ontouchstart="handleNoButton()">ไม่เอาอ่ะ</button>
+  <main class="relative z-10 w-full max-w-md bg-white/90 backdrop-blur-md rounded-3xl shadow-2xl p-6 sm:p-8 text-center border border-white/50 transition-all duration-500">
+    
+    <!-- Ask Screen Section -->
+    <div id="ask-screen" class="transition-all duration-300">
+      <div class="relative w-28 h-28 mx-auto mb-6 flex items-center justify-center bg-rose-50 rounded-full shadow-inner animate-pulse">
+        <span class="text-6xl select-none">🥺</span>
+      </div>
+      
+      <h1 class="text-2xl sm:text-3xl font-bold text-rose-600 mb-3 tracking-tight">
+        คืนดีกันนะ... ตัวเอง 💖
+      </h1>
+      
+      <p class="text-gray-600 text-sm sm:text-base leading-relaxed mb-8">
+        รู้ตัวว่าทำผิดไปแล้ว และสำนึกผิดจริงๆ นะ<br>
+        คิดถึงรอยยิ้ม คิดถึงเวลาดีๆ ที่เรามีให้กันมากๆ เลย<br>
+        ยกโทษให้คนโก๊ะคนนี้ แล้วกลับมาเริ่มต้นใหม่ด้วยกันอีกครั้งนะ 🥺
+      </p>
+
+      <!-- Button Container -->
+      <div id="btn-container" class="relative flex items-center justify-center gap-4 h-16 w-full">
+        <button id="yes-btn" onclick="acceptApology()" class="flex-1 bg-gradient-to-r from-rose-500 to-pink-500 hover:from-rose-600 hover:to-pink-600 text-white font-semibold py-3 px-6 rounded-2xl shadow-lg shadow-rose-500/30 transform hover:scale-105 active:scale-95 transition-all duration-200 text-base sm:text-lg z-20">
+          คืนดีกันนะ 💕
+        </button>
+        
+        <button id="no-btn" onmouseover="dodgeButton()" ontouchstart="dodgeButton(); event.preventDefault();" onclick="dodgeButton()" class="bg-gray-200 hover:bg-gray-300 text-gray-700 font-semibold py-3 px-6 rounded-2xl shadow transition-all duration-150 text-base sm:text-lg absolute right-0 z-20">
+          ไม่ดีกว่า 🙈
+        </button>
+      </div>
     </div>
-  </div>
 
-  <!-- หน้าสรุปเมื่อกด "ได้" -->
-  <div class="container result-card" id="yesStep">
-    <img src="https://media1.tenor.com/m/p_S_388Xk3sAAAAC/peach-and-goma-hug.gif" alt="Happy Hug" class="gif-img">
-    <div class="result-title">ขอบคุณนะสำหรับโอกาส 🙏💖</div>
-    <div class="result-desc">
-      เค้าสัญญาว่าจะดูแลความสัมพันธ์ครั้งนี้ให้ดีกว่าเดิม จะใส่ใจและตั้งใจให้มากขึ้นจริงๆ นะครับ ❤️
-    </div>
-  </div>
+    <!-- Success Screen Section -->
+    <div id="success-screen" class="hidden opacity-0 transform scale-90 transition-all duration-500">
+      <div class="w-28 h-28 mx-auto mb-6 flex items-center justify-center bg-gradient-to-tr from-rose-400 to-pink-500 rounded-full shadow-lg shadow-rose-500/40 animate-bounce">
+        <span class="text-6xl select-none">🎉</span>
+      </div>
+      
+      <h2 class="text-2xl sm:text-3xl font-bold text-rose-600 mb-3">
+        เย้! ดีใจที่สุดเลย 🥰✨
+      </h2>
+      
+      <p class="text-gray-600 text-sm sm:text-base leading-relaxed mb-6">
+        ขอบคุณนะที่ให้โอกาสกันอีกครั้ง! 💖<br>
+        สัญญาว่าจะดูแลรักษาความรักของเราให้ดีที่สุดเลย<br>
+        เดี๋ยววันนี้พาไปกินของอร่อยๆ เป็นการไถ่โทษนะ! 🧋🍰
+      </p>
 
-  <!-- หน้าสรุปเมื่อกด "เคารพการเลือกของอ้วน" -->
-  <div class="container result-card" id="respectStep">
-    <img src="https://media1.tenor.com/m/o_w5o-J5hR8AAAAC/peach-goma-peach-and-goma.gif" alt="Respect" class="gif-img">
-    <div class="result-title">เข้าใจแล้วครับอ้วน 🤍</div>
-    <div class="result-desc">
-      ไม่เป็นไรเลยนะ เคารพการตัดสินใจของอ้วนเสมอ ขอบคุณสำหรับทุกช่วงเวลาดีๆ ที่ผ่านมา ขอให้อ้วนมีความสุขมากๆ น้า
+      <div class="p-4 bg-rose-50 rounded-2xl border border-rose-100 text-rose-700 text-sm font-medium">
+        "เธอคือความสุขที่ดีที่สุดของเราเลยนะ" 💌
+      </div>
     </div>
-    <button class="btn btn-thanks" onclick="alert('ขอบคุณอ้วนมากๆ เช่นกันนะ 😊✨')">ขอบคุณนะ</button>
-  </div>
+
+  </main>
 
   <script>
-    let noCount = 0;
-    const noBtn = document.getElementById('noBtn');
+    // Track dodge count for playful messages or effects
+    let dodgeCount = 0;
+    const noBtnTexts = ["ไม่ดีกว่า 🙈", "แน่ใจหรอ? 🥺", "ลองคิดดูใหม่อ่ะ 😢", "กดปุ่มซ้ายเถอะนะ 💖", "หนีเก่งจัง 🏃💨", "ใจร้ายจังงง 😭"];
 
-    function handleNoButton() {
-      noCount++;
+    function dodgeButton() {
+      const btn = document.getElementById('no-btn');
+      const container = document.getElementById('btn-container');
+      const containerRect = container.getBoundingClientRect();
+      
+      // Calculate random offsets inside window / container boundaries
+      const maxX = window.innerWidth - btn.offsetWidth - 40;
+      const maxY = window.innerHeight - btn.offsetHeight - 40;
+      
+      const randomX = Math.max(20, Math.random() * maxX);
+      const randomY = Math.max(20, Math.random() * maxY);
 
-      if (noCount === 1) {
-        noBtn.innerText = 'กลับมาดีกันนะจะไม่ทำแบบนั้นแล้ว';
-        moveButton();
-      } else if (noCount === 2) {
-        noBtn.innerText = 'เค้าขอโทษนะตอนนั้นเค้ายังเด็กอยู่อ่ะคับ';
-        moveButton();
-      } else if (noCount === 3) {
-        noBtn.innerText = 'เค้าขอโทษนะทุกเรื่องที่ผ่านมาเรามาเริ่มใหม่กันนะ';
-        moveButton();
-      } else if (noCount === 4 || noCount === 5) {
-        moveButton();
-      } else if (noCount === 6) {
-        // รอบที่ 6 หยุดวิ่ง และเปลี่ยนเป็นข้อความเคารพการตัดสินใจ
-        noBtn.style.position = 'relative';
-        noBtn.style.left = '0';
-        noBtn.style.top = '0';
-        noBtn.style.transform = 'none';
-        noBtn.style.backgroundColor = '#eccc68';
-        noBtn.style.color = '#fff';
-        noBtn.innerText = 'ขอบคุณนะที่มาเล่น เค้าเคารพการเลือกของอ้วนนะ';
-      } else {
-        // รอบที่ 7 (เมื่อกดปุ่มข้อความรอบที่ 6)
-        document.getElementById('mainStep').style.display = 'none';
-        document.getElementById('respectStep').style.display = 'block';
+      // Make button absolute relative to viewport for smooth escaping
+      btn.style.position = 'fixed';
+      btn.style.left = `${randomX}px`;
+      btn.style.top = `${randomY}px`;
+
+      // Cycle funny button texts
+      dodgeCount = (dodgeCount + 1) % noBtnTexts.length;
+      btn.innerText = noBtnTexts[dodgeCount];
+    }
+
+    function acceptApology() {
+      const askScreen = document.getElementById('ask-screen');
+      const successScreen = document.getElementById('success-screen');
+
+      // Hide ask screen smoothly
+      askScreen.style.opacity = '0';
+      askScreen.style.transform = 'scale(0.9)';
+      
+      setTimeout(() => {
+        askScreen.style.display = 'none';
+        successScreen.style.display = 'block';
+        setTimeout(() => {
+          successScreen.style.opacity = '1';
+          successScreen.style.transform = 'scale(1)';
+        }, 50);
+      }, 300);
+
+      // Trigger celebratory heavy heart rain
+      createHeartRain();
+    }
+
+    function createHeartRain() {
+      const container = document.getElementById('hearts-container');
+      const emojis = ['💖', '❤️', '💕', '✨', '🥰', '🌹'];
+      
+      for (let i = 0; i < 35; i++) {
+        const heart = document.createElement('div');
+        heart.className = 'absolute text-2xl sm:text-4xl floating-heart';
+        heart.innerHTML = emojis[Math.floor(Math.random() * emojis.length)];
+        heart.style.left = `${Math.random() * 100}vw`;
+        heart.style.animationDuration = `${3 + Math.random() * 3}s`;
+        heart.style.animationDelay = `${Math.random() * 2}s`;
+        container.appendChild(heart);
       }
     }
 
-    function moveButton() {
-      const x = Math.random() * (window.innerWidth - 220) - (window.innerWidth / 2 - 110);
-      const y = Math.random() * (window.innerHeight - 200) - (window.innerHeight / 2 - 100);
+    // Initialize floating background ambient hearts on load
+    window.addEventListener('DOMContentLoaded', () => {
+      const container = document.getElementById('hearts-container');
+      const ambientEmojis = ['💖', '🤍', '🌸'];
       
-      noBtn.style.position = 'fixed';
-      noBtn.style.left = '50%';
-      noBtn.style.top = '50%';
-      noBtn.style.transform = `translate(${x}px, ${y}px)`;
-    }
-
-    function acceptLove() {
-      document.getElementById('mainStep').style.display = 'none';
-      document.getElementById('yesStep').style.display = 'block';
-    }
+      setInterval(() => {
+        if (container.children.length < 15) {
+          const heart = document.createElement('div');
+          heart.className = 'absolute text-xl floating-heart opacity-60';
+          heart.innerHTML = ambientEmojis[Math.floor(Math.random() * ambientEmojis.length)];
+          heart.style.left = `${Math.random() * 100}vw`;
+          heart.style.animationDuration = `${5 + Math.random() * 3}s`;
+          container.appendChild(heart);
+          
+          setTimeout(() => {
+            heart.remove();
+          }, 7000);
+        }
+      }, 800);
+    });
   </script>
+
 </body>
 </html>
+```
